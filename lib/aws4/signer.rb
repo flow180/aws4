@@ -1,4 +1,5 @@
 # encoding: UTF-8
+require "cgi"
 require "openssl"
 require "time"
 require "uri"
@@ -16,14 +17,15 @@ module AWS4
       @region = config[:region] || config["region"]
     end
 
-    def sign(method, uri, headers, body, debug = false)
+    def sign(method, uri, service, headers, body, debug = false)
       @method = method.upcase
       @uri = uri
       @headers = headers
       @body = body
-      @service = @uri.host.split(".", 2)[0]
-      date_header = headers["Date"] || headers["DATE"] || headers["date"]
-      @date = (date_header ? Time.parse(date_header) : Time.now).utc.strftime(RFC8601BASIC)
+      @service = service
+      @headers['Host'] = headers['Host'] || uri.host
+      @headers['X-Amz-Date'] = Time.now.utc.strftime(RFC8601BASIC)
+      @date = @headers['X-Amz-Date']
       dump if debug
       signed = headers.dup
       signed['Authorization'] = authorization(headers)
@@ -82,11 +84,11 @@ module AWS4
     end
 
     def hmac(key, value)
-      OpenSSL::HMAC.digest(OpenSSL::Digest::Digest.new('sha256'), key, value)
+      OpenSSL::HMAC.digest(OpenSSL::Digest.new('sha256'), key, value)
     end
 
     def hexhmac(key, value)
-      OpenSSL::HMAC.hexdigest(OpenSSL::Digest::Digest.new('sha256'), key, value)
+      OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new('sha256'), key, value)
     end
 
     def dump
@@ -95,6 +97,7 @@ module AWS4
       puts "canonical_request"
       puts canonical_request
       puts "authorization"
+      puts signature
     end
   end
 end

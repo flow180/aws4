@@ -20,7 +20,7 @@ It is designed to be library agnostic.
     body="{}"
 
     # sign headers
-    headers = signer.sign("POST", uri, headers, body)
+    headers = signer.sign("POST", uri, 'dynamodb', headers, body)
 
 ## License
 
