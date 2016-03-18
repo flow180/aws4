@@ -23,9 +23,8 @@ module AWS4
       @headers = headers
       @body = body
       @service = service
-      @headers['Host'] = headers['Host'] || uri.host
-      @headers['X-Amz-Date'] = Time.now.utc.strftime(RFC8601BASIC)
-      @date = @headers['X-Amz-Date']
+      date_header = headers["Date"] || headers["DATE"] || headers["date"]
+      @date = (date_header ? Time.parse(date_header) : Time.now).utc.strftime(RFC8601BASIC)
       dump if debug
       signed = headers.dup
       signed['Authorization'] = authorization(headers)

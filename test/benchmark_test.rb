@@ -23,7 +23,7 @@ describe "benchmark" do
 
     t = Benchmark.realtime do
       trials.times do
-        signed = signer.sign("POST", uri, headers, body)
+        signed = signer.sign("POST", uri, "host", headers, body)
       end
     end
     puts "#{(trials/t).round(1)} signatures/second (#{((t/trials.to_f)*1000).round(3)}ms/signature)"

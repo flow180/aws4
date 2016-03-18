@@ -20,7 +20,7 @@ describe AWS4::Signer do
       "Date" => "Mon, 09 Sep 2011 23:36:00 GMT"
     }
     body = ""
-    signed = signer.sign("GET", uri, headers, body)
+    signed = signer.sign("GET", uri, "host", headers, body)
     signed["Date"].must_equal("Mon, 09 Sep 2011 23:36:00 GMT")
     signed["Host"].must_equal("host.foo.com")
     signed["Authorization"].must_equal("AWS4-HMAC-SHA256 Credential=AKIDEXAMPLE/20110909/us-east-1/host/aws4_request, SignedHeaders=date;host, Signature=b27ccfbfa7df52a200ff74193ca6e32d4b48b8856fab7ebf1c595d0670a7e470")
@@ -33,7 +33,7 @@ describe AWS4::Signer do
       "Date" => "Mon, 09 Sep 2011 23:36:00 GMT"
     }
     body = ""
-    signed = signer.sign("GET", uri, headers, body)
+    signed = signer.sign("GET", uri, "host", headers, body)
     signed["Date"].must_equal("Mon, 09 Sep 2011 23:36:00 GMT")
     signed["Host"].must_equal("host.foo.com")
     signed["Authorization"].must_equal("AWS4-HMAC-SHA256 Credential=AKIDEXAMPLE/20110909/us-east-1/host/aws4_request, SignedHeaders=date;host, Signature=b27ccfbfa7df52a200ff74193ca6e32d4b48b8856fab7ebf1c595d0670a7e470")
@@ -46,7 +46,7 @@ describe AWS4::Signer do
       "Date" => "Mon, 09 Sep 2011 23:36:00 GMT"
     }
     body = ""
-    signed = signer.sign("GET", uri, headers, body)
+    signed = signer.sign("GET", uri, "host", headers, body)
     signed["Date"].must_equal("Mon, 09 Sep 2011 23:36:00 GMT")
     signed["Host"].must_equal("host.foo.com")
     signed["Authorization"].must_equal("AWS4-HMAC-SHA256 Credential=AKIDEXAMPLE/20110909/us-east-1/host/aws4_request, SignedHeaders=date;host, Signature=b27ccfbfa7df52a200ff74193ca6e32d4b48b8856fab7ebf1c595d0670a7e470")
@@ -59,7 +59,7 @@ describe AWS4::Signer do
       "Date" => "Mon, 09 Sep 2011 23:36:00 GMT"
     }
     body = ""
-    signed = signer.sign("GET", uri, headers, body)
+    signed = signer.sign("GET", uri, "host", headers, body)
     signed["Date"].must_equal("Mon, 09 Sep 2011 23:36:00 GMT")
     signed["Host"].must_equal("host.foo.com")
     signed["Authorization"].must_equal("AWS4-HMAC-SHA256 Credential=AKIDEXAMPLE/20110909/us-east-1/host/aws4_request, SignedHeaders=date;host, Signature=910e4d6c9abafaf87898e1eb4c929135782ea25bb0279703146455745391e63a")
@@ -72,7 +72,7 @@ describe AWS4::Signer do
       "Date" => "Mon, 09 Sep 2011 23:36:00 GMT"
     }
     body = ""
-    signed = signer.sign("GET", uri, headers, body)
+    signed = signer.sign("GET", uri, "host", headers, body)
     signed["Date"].must_equal("Mon, 09 Sep 2011 23:36:00 GMT")
     signed["Host"].must_equal("host.foo.com")
     signed["Authorization"].must_equal("AWS4-HMAC-SHA256 Credential=AKIDEXAMPLE/20110909/us-east-1/host/aws4_request, SignedHeaders=date;host, Signature=b27ccfbfa7df52a200ff74193ca6e32d4b48b8856fab7ebf1c595d0670a7e470")
@@ -85,7 +85,7 @@ describe AWS4::Signer do
       "Date" => "Mon, 09 Sep 2011 23:36:00 GMT"
     }
     body = ""
-    signed = signer.sign("GET", uri, headers, body)
+    signed = signer.sign("GET", uri, "host", headers, body)
     signed["Date"].must_equal("Mon, 09 Sep 2011 23:36:00 GMT")
     signed["Host"].must_equal("host.foo.com")
     signed["Authorization"].must_equal("AWS4-HMAC-SHA256 Credential=AKIDEXAMPLE/20110909/us-east-1/host/aws4_request, SignedHeaders=date;host, Signature=56c054473fd260c13e4e7393eb203662195f5d4a1fada5314b8b52b23f985e9f")
@@ -98,7 +98,7 @@ describe AWS4::Signer do
       "Date" => "Mon, 09 Sep 2011 23:36:00 GMT"
     }
     body = ""
-    signed = signer.sign("GET", uri, headers, body)
+    signed = signer.sign("GET", uri, "host", headers, body)
     signed["Date"].must_equal("Mon, 09 Sep 2011 23:36:00 GMT")
     signed["Host"].must_equal("host.foo.com")
     signed["Authorization"].must_equal("AWS4-HMAC-SHA256 Credential=AKIDEXAMPLE/20110909/us-east-1/host/aws4_request, SignedHeaders=date;host, Signature=830cc36d03f0f84e6ee4953fbe701c1c8b71a0372c63af9255aa364dd183281e")
@@ -112,7 +112,7 @@ describe AWS4::Signer do
       "p" => " phfft "
     }
     body = ""
-    signed = signer.sign("POST", uri, headers, body)
+    signed = signer.sign("POST", uri, "host", headers, body)
     signed["Date"].must_equal("Mon, 09 Sep 2011 23:36:00 GMT")
     signed["Host"].must_equal("host.foo.com")
     signed["Authorization"].must_equal("AWS4-HMAC-SHA256 Credential=AKIDEXAMPLE/20110909/us-east-1/host/aws4_request, SignedHeaders=date;host;p, Signature=debf546796015d6f6ded8626f5ce98597c33b47b9164cf6b17b4642036fcb592")
@@ -125,7 +125,7 @@ describe AWS4::Signer do
       "Date" => "Mon, 09 Sep 2011 23:36:00 GMT"
     }
     body = ""
-    signed = signer.sign("GET", uri, headers, body)
+    signed = signer.sign("GET", uri, "host", headers, body)
     signed["Date"].must_equal("Mon, 09 Sep 2011 23:36:00 GMT")
     signed["Host"].must_equal("host.foo.com")
     signed["Authorization"].must_equal("AWS4-HMAC-SHA256 Credential=AKIDEXAMPLE/20110909/us-east-1/host/aws4_request, SignedHeaders=date;host, Signature=be7148d34ebccdc6423b19085378aa0bee970bdc61d144bd1a8c48c33079ab09")
@@ -138,7 +138,7 @@ describe AWS4::Signer do
       "Date" => "Mon, 09 Sep 2011 23:36:00 GMT"
     }
     body = ""
-    signed = signer.sign("GET", uri, headers, body)
+    signed = signer.sign("GET", uri, "host", headers, body)
     signed["Date"].must_equal("Mon, 09 Sep 2011 23:36:00 GMT")
     signed["Host"].must_equal("host.foo.com")
     signed["Authorization"].must_equal("AWS4-HMAC-SHA256 Credential=AKIDEXAMPLE/20110909/us-east-1/host/aws4_request, SignedHeaders=date;host, Signature=0dc122f3b28b831ab48ba65cb47300de53fbe91b577fe113edac383730254a3b")
@@ -151,7 +151,7 @@ describe AWS4::Signer do
       "Date" => "Mon, 09 Sep 2011 23:36:00 GMT"
     }
     body = ""
-    signed = signer.sign("GET", uri, headers, body)
+    signed = signer.sign("GET", uri, "host", headers, body)
     signed["Date"].must_equal("Mon, 09 Sep 2011 23:36:00 GMT")
     signed["Host"].must_equal("host.foo.com")
     signed["Authorization"].must_equal("AWS4-HMAC-SHA256 Credential=AKIDEXAMPLE/20110909/us-east-1/host/aws4_request, SignedHeaders=date;host, Signature=6fb359e9a05394cc7074e0feb42573a2601abc0c869a953e8c5c12e4e01f1a8c")
@@ -164,7 +164,7 @@ describe AWS4::Signer do
       "Date" => "Mon, 09 Sep 2011 23:36:00 GMT"
     }
     body = ""
-    signed = signer.sign("POST", uri, headers, body)
+    signed = signer.sign("POST", uri, "host", headers, body)
     signed["Date"].must_equal("Mon, 09 Sep 2011 23:36:00 GMT")
     signed["Host"].must_equal("host.foo.com")    
     signed["Authorization"].must_equal("AWS4-HMAC-SHA256 Credential=AKIDEXAMPLE/20110909/us-east-1/host/aws4_request, SignedHeaders=date;host, Signature=22902d79e148b64e7571c3565769328423fe276eae4b26f83afceda9e767f726")    
@@ -177,7 +177,7 @@ describe AWS4::Signer do
       "Date" => "Mon, 09 Sep 2011 23:36:00 GMT"
     }
     body = ""
-    signed = signer.sign("POST", uri, headers, body)
+    signed = signer.sign("POST", uri, "host", headers, body)
     signed["Date"].must_equal("Mon, 09 Sep 2011 23:36:00 GMT")
     signed["Host"].must_equal("host.foo.com")    
     signed["Authorization"].must_equal("AWS4-HMAC-SHA256 Credential=AKIDEXAMPLE/20110909/us-east-1/host/aws4_request, SignedHeaders=date;host, Signature=b6e3b79003ce0743a491606ba1035a804593b0efb1e20a11cba83f8c25a57a92")    
@@ -191,7 +191,7 @@ describe AWS4::Signer do
       "ZOO"  => "zoobar"
     }
     body = ""
-    signed = signer.sign("POST", uri, headers, body)
+    signed = signer.sign("POST", uri, "host", headers, body)
     signed["Date"].must_equal("Mon, 09 Sep 2011 23:36:00 GMT")
     signed["Host"].must_equal("host.foo.com")    
     signed["Authorization"].must_equal("AWS4-HMAC-SHA256 Credential=AKIDEXAMPLE/20110909/us-east-1/host/aws4_request, SignedHeaders=date;host;zoo, Signature=b7a95a52518abbca0964a999a880429ab734f35ebbf1235bd79a5de87756dc4a")
@@ -204,7 +204,7 @@ describe AWS4::Signer do
       "DATE" => "Mon, 09 Sep 2011 23:36:00 GMT"
     }
     body = ""
-    signed = signer.sign("POST", uri, headers, body)
+    signed = signer.sign("POST", uri, "host", headers, body)
     signed["DATE"].must_equal("Mon, 09 Sep 2011 23:36:00 GMT")
     signed["Host"].must_equal("host.foo.com")    
     signed["Authorization"].must_equal("AWS4-HMAC-SHA256 Credential=AKIDEXAMPLE/20110909/us-east-1/host/aws4_request, SignedHeaders=date;host, Signature=22902d79e148b64e7571c3565769328423fe276eae4b26f83afceda9e767f726")
@@ -218,7 +218,7 @@ describe AWS4::Signer do
       "zoo" => "ZOOBAR"
     }
     body = ""
-    signed = signer.sign("POST", uri, headers, body)
+    signed = signer.sign("POST", uri, "host", headers, body)
     signed["Date"].must_equal("Mon, 09 Sep 2011 23:36:00 GMT")
     signed["Host"].must_equal("host.foo.com")    
     signed["Authorization"].must_equal("AWS4-HMAC-SHA256 Credential=AKIDEXAMPLE/20110909/us-east-1/host/aws4_request, SignedHeaders=date;host;zoo, Signature=273313af9d0c265c531e11db70bbd653f3ba074c1009239e8559d3987039cad7")
@@ -232,7 +232,7 @@ describe AWS4::Signer do
       "Content-Type" => "application/x-www-form-urlencoded"
     }
     body = "foo=bar"
-    signed = signer.sign("POST", uri, headers, body)
+    signed = signer.sign("POST", uri, "host", headers, body)
     signed["Date"].must_equal("Mon, 09 Sep 2011 23:36:00 GMT")
     signed["Host"].must_equal("host.foo.com")    
     signed["Content-Type"].must_equal("application/x-www-form-urlencoded")
@@ -247,7 +247,7 @@ describe AWS4::Signer do
       "Content-Type" => "application/x-www-form-urlencoded; charset=utf8"
     }
     body = "foo=bar"
-    signed = signer.sign("POST", uri, headers, body)
+    signed = signer.sign("POST", uri, "host", headers, body)
     signed["Date"].must_equal("Mon, 09 Sep 2011 23:36:00 GMT")
     signed["Host"].must_equal("host.foo.com")    
     signed["Content-Type"].must_equal("application/x-www-form-urlencoded; charset=utf8")
